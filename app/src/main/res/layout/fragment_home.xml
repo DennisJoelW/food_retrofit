@@ -57,7 +57,7 @@
         android:text="Choose Today's Recipe"
         android:textSize="@dimen/_13ssp"
         android:fontFamily="@font/myfont"
-        android:layout_below="@id/linear_header"
+        android:layout_below="@id/card_category"
         android:layout_marginStart="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_20sdp"/>
     
@@ -114,7 +114,7 @@
         android:text="Food Categories"
         android:textSize="@dimen/_13ssp"
         android:fontFamily="@font/myfont"
-        android:layout_below="@id/recview_popular"
+        android:layout_below="@id/linear_header"
         android:layout_marginStart="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_20sdp"/>
 
@@ -130,6 +130,7 @@
             android:id="@+id/recview_category"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:orientation="horizontal"
             android:scrollbars="none"/>
 
     </androidx.cardview.widget.CardView>

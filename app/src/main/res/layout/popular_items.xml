@@ -9,12 +9,22 @@
     android:elevation="@dimen/_3sdp"
     >
 
-    <ImageView
-        android:id="@+id/img_popular_meal_item"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        />
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/img_popular_meal_item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            />
+
+
+    </RelativeLayout>
+
+
 
 
 </androidx.cardview.widget.CardView>

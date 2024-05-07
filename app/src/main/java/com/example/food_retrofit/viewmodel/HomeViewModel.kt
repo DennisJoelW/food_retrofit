@@ -7,6 +7,8 @@ import androidx.lifecycle.ViewModel
 import com.example.food_retrofit.fragments.HomeFragment
 import com.example.food_retrofit.pojo.CategoryList
 import com.example.food_retrofit.pojo.CategoryMeals
+import com.example.food_retrofit.pojo.FoodCategory
+import com.example.food_retrofit.pojo.FoodCategoryList
 import com.example.food_retrofit.pojo.Meal
 import com.example.food_retrofit.pojo.MealList
 import com.example.food_retrofit.retrofit.RetrofitInstance
@@ -21,6 +23,8 @@ class HomeViewModel():ViewModel() {
     private var ingredientsLiveData = MutableLiveData<ArrayList<String>>()
 
     private var popularItemsLiveData = MutableLiveData<List<CategoryMeals>>()
+
+    private var foodCategoryLiveData = MutableLiveData<List<FoodCategory>>()
 
     fun getRandomMeal(){
         RetrofitInstance.api.getRandomMeal().enqueue(object : Callback<MealList> {
@@ -74,6 +78,23 @@ class HomeViewModel():ViewModel() {
         })
     }
 
+    fun getFoodCategories(){
+        RetrofitInstance.api.getFoodCategories().enqueue(object: Callback<FoodCategoryList>{
+            override fun onResponse(p0: Call<FoodCategoryList>, response: Response<FoodCategoryList>) {
+                if(response.body() != null){
+                    response.body()?.let { FoodCategoryList ->
+                        foodCategoryLiveData.postValue(FoodCategoryList.categories)
+                    }
+                }
+            }
+
+            override fun onFailure(p0: Call<FoodCategoryList>, p1: Throwable) {
+                Log.d("HomeViewModel", p1.message.toString())
+            }
+
+        })
+    }
+
     fun observeRandomMealLiveData(): LiveData<Meal> { //liveData can only read
         return randomMealLiveData;
     }
@@ -83,6 +104,10 @@ class HomeViewModel():ViewModel() {
 
     fun observePopularItemsLiveData(): LiveData<List<CategoryMeals>>{
         return popularItemsLiveData;
+    }
+
+    fun observeFoodCategoryLiveData(): LiveData<List<FoodCategory>>{
+        return foodCategoryLiveData;
     }
 
 
