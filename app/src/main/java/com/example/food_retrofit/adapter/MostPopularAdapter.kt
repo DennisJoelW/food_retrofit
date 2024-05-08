@@ -31,6 +31,7 @@ class MostPopularAdapter(): RecyclerView.Adapter<MostPopularAdapter.PopularMealV
         holder.binding.parent.setOnClickListener(){
             onitemClick.invoke(mealsList[position])
         }
+        holder.binding.tvPopularMealName.setText(mealsList[position].strMeal)
 
         Glide.with(holder.itemView)
             .load(mealsList[position].strMealThumb)

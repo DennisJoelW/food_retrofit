@@ -57,7 +57,7 @@
         android:text="Choose Today's Recipe"
         android:textSize="@dimen/_13ssp"
         android:fontFamily="@font/myfont"
-        android:layout_below="@id/card_category"
+        android:layout_below="@id/linear_header"
         android:layout_marginStart="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_20sdp"/>
     
@@ -72,14 +72,12 @@
         android:elevation="20dp"
         app:cardUseCompatPadding="true" >
 
-            <ImageView
-                android:id="@+id/img_random_food"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                android:background="@color/accent"/>
-
-
+        <ImageView
+            android:id="@+id/img_random_food"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/accent"
+            android:scaleType="centerCrop" />
 
 
     </androidx.cardview.widget.CardView> <!-- for shadow -->
@@ -92,17 +90,17 @@
         android:text="Popular Recipes"
         android:textSize="@dimen/_13ssp"
         android:fontFamily="@font/myfont"
-        android:layout_below="@id/card_random_food"
+        android:layout_below="@id/recview_category"
         android:layout_marginStart="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_20sdp"/>
     
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recview_popular"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/_120sdp"
-        android:layout_marginStart="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/_17sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginEnd="@dimen/_17sdp"
         android:layout_below="@id/txt_popular"/>
 
 
@@ -114,26 +112,22 @@
         android:text="Food Categories"
         android:textSize="@dimen/_13ssp"
         android:fontFamily="@font/myfont"
-        android:layout_below="@id/linear_header"
+        android:layout_below="@id/card_random_food"
         android:layout_marginStart="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_20sdp"/>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_category"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_20sdp"
-        android:layout_marginEnd="@dimen/_20sdp"
-        android:layout_below="@id/txt_category">
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recview_category"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:layout_below="@id/txt_category"
             android:scrollbars="none"/>
 
-    </androidx.cardview.widget.CardView>
 
         </RelativeLayout>
 

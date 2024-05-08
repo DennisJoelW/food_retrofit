@@ -5,4 +5,7 @@ data class FoodCategory(
     val strCategory: String,
     val strCategoryDescription: String,
     val strCategoryThumb: String
+
+
 )
+
