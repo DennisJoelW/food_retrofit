@@ -18,7 +18,6 @@ class CategoriesAdapter(): RecyclerView.Adapter<CategoriesAdapter.ViewHolder>(){
         notifyDataSetChanged();
     }
 
-
     class ViewHolder(val binding: CategoryItemBinding): RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

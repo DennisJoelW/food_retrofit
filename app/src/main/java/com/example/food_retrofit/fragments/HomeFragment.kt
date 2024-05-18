@@ -97,7 +97,6 @@ class HomeFragment : Fragment() {
 
 
 
-
     private fun onPopularItemClicked() {
         popularItemsAdapter.onitemClick = {meal ->
             val intent = Intent(activity, MealActivity::class.java)
