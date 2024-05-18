@@ -5,6 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.food_retrofit.fragments.HomeFragment
+import com.example.food_retrofit.pojo.CategoryItems
+import com.example.food_retrofit.pojo.CategoryItemsList
 import com.example.food_retrofit.pojo.CategoryList
 import com.example.food_retrofit.pojo.CategoryMeals
 import com.example.food_retrofit.pojo.FoodCategory
@@ -25,6 +27,7 @@ class HomeViewModel():ViewModel() {
     private var popularItemsLiveData = MutableLiveData<List<CategoryMeals>>()
 
     private var foodCategoryLiveData = MutableLiveData<List<FoodCategory>>()
+
 
     fun getRandomMeal(){
         RetrofitInstance.api.getRandomMeal().enqueue(object : Callback<MealList> {
@@ -95,6 +98,8 @@ class HomeViewModel():ViewModel() {
         })
     }
 
+
+
     fun observeRandomMealLiveData(): LiveData<Meal> { //liveData can only read
         return randomMealLiveData;
     }
@@ -109,6 +114,8 @@ class HomeViewModel():ViewModel() {
     fun observeFoodCategoryLiveData(): LiveData<List<FoodCategory>>{
         return foodCategoryLiveData;
     }
+
+
 
 
 }

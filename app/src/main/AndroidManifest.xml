@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Food_retrofit"
         tools:targetApi="31">
         <activity
+            android:name=".CategoryItemsActivity"
+            android:exported="false" />
+        <activity
             android:name=".MealActivity"
             android:exported="false" />
         <activity

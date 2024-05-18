@@ -2,42 +2,26 @@ package com.example.food_retrofit.fragments
 
 import android.content.Intent
 import androidx.lifecycle.Observer
-import android.health.connect.datatypes.MealType
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.example.food_retrofit.MealActivity
-import com.example.food_retrofit.R
 import com.example.food_retrofit.adapter.CategoriesAdapter
 import com.example.food_retrofit.adapter.MostPopularAdapter
 import com.example.food_retrofit.databinding.FragmentHomeBinding
 import com.example.food_retrofit.pojo.CategoryMeals
 import com.example.food_retrofit.pojo.FoodCategory
 import com.example.food_retrofit.pojo.Meal
-import com.example.food_retrofit.pojo.MealList
-import com.example.food_retrofit.retrofit.RetrofitInstance
 import com.example.food_retrofit.viewmodel.HomeViewModel
-import retrofit2.Call
-import retrofit2.Callback
 import retrofit2.Response
 
-// 1. Buat Interface dan Instance seperti MealApi dan RetrofitInstance
-// 2. Buat pojo(model) Meal sebagai class MealList buat membuat list meal
-// 3. line 40 buat api
-// 4.     buildFeatures{
-//        viewBinding = true
-//    } tarok ini di build gradle scripts untuk viewbinding
-// 5. private lateinit var binding:FragmentHomeBinding (buat viewbinding)
-// 6. line 40
-// 7>.
+
 
 class HomeFragment : Fragment() {
     private lateinit var binding:FragmentHomeBinding
@@ -63,7 +47,9 @@ class HomeFragment : Fragment() {
         homeMvvm = ViewModelProvider(this).get(HomeViewModel::class.java)
 
         popularItemsAdapter = MostPopularAdapter()
-        categoriesAdapter = CategoriesAdapter()
+        categoriesAdapter = CategoriesAdapter(requireActivity())
+
+
     }
 
     override fun onCreateView(
@@ -94,7 +80,6 @@ class HomeFragment : Fragment() {
         homeMvvm.getFoodCategories()
         observeFoodCategoryLiveData()
     }
-
 
 
     private fun onPopularItemClicked() {
@@ -148,6 +133,7 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
     }
+
 
     private fun observeRandomMeal() {
         homeMvvm.observeRandomMealLiveData().observe(viewLifecycleOwner, Observer { meal ->
